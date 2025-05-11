@@ -1,0 +1,28 @@
+services:
+  # Основное Express-приложение
+  app:
+    build: dockerfile/app
+    # restart: unless-stopped
+    ports:
+      - "3000:3000"
+#    environment:
+#      - NODE_ENV=production
+    volumes:
+      - ./:/app  # Для разработки (горячая перезагрузка)
+    command: "npm run dev"
+    #  - /app/node_modules  # Исключаем перезапись node_modules
+    # healthcheck:  # Раскомментировать для продакшена
+    #   test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+#  rabbitmq:
+#    image: rabbitmq:3-management
+#    ports:
+#      - "5672:5672"   # AMQP порт (для клиентов)
+#      - "15672:15672"  # Web-интерфейс (логин: guest/guest)
+#    volumes:
+#      - rabbitmq_data:/var/lib/rabbitmq
+
+#volumes:
+#  rabbitmq_data:
