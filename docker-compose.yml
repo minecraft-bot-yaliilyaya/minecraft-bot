@@ -6,10 +6,13 @@ services:
     ports:
       - "3000:3000"
 #    environment:
-#      - NODE_ENV=production
+#      - NODE_ENV=
     volumes:
       - ./:/app  # Для разработки (горячая перезагрузка)
-    command: "npm run dev"
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa.dist
+#    command: "npm run dev"
+    command: "tail -f README.md"
+    tty: true
     #  - /app/node_modules  # Исключаем перезапись node_modules
     # healthcheck:  # Раскомментировать для продакшена
     #   test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
