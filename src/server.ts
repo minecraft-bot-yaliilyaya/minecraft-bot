@@ -3,6 +3,7 @@ import express from "express";
 import { TYPES } from "./container/types";
 import { container } from "./container/config";
 import { UserController } from "./controllers/UserController";
+import {MineflayerBotService} from "./services/MineflayerBotService";
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,10 @@ app.get("/users", (req, res) => userController.getAllUsers(req, res));
 app.get("/users/:id", (req, res) => userController.getUserById(req, res));
 app.post("/users", (req, res) => userController.createUser(req, res));
 app.get("/addNextUser", (req, res) => userController.addNextUser(req, res));
+
+const botService = container.get<MineflayerBotService>(TYPES.BotService);
+
+// botService.init();
 
 const PORT = 3000;
 app.listen(PORT, () => {

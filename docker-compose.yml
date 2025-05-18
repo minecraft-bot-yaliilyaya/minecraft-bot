@@ -9,10 +9,12 @@ services:
 #      - NODE_ENV=
     volumes:
       - ./:/app  # Для разработки (горячая перезагрузка)
-      - ~/.ssh/id_rsa:/root/.ssh/id_rsa.dist
-#    command: "npm run dev"
-    command: "tail -f README.md"
-    tty: true
+      #- ~/.ssh/id_rsa:/root/.ssh/id_rsa.dist
+    command: "npm run dev"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    #command: "tail -f README.md"
+    #tty: true
     #  - /app/node_modules  # Исключаем перезапись node_modules
     # healthcheck:  # Раскомментировать для продакшена
     #   test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
