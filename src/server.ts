@@ -2,18 +2,13 @@ import "reflect-metadata";
 import express from "express";
 import { TYPES } from "./container/types";
 import { container } from "./container/config";
-import { UserController } from "./controllers/UserController";
-import {MineflayerBotService} from "./services/MineflayerBotService";
+import { MineflayerBotService } from "./services/MineflayerBotService";
+import {RouteBuilder} from './routes/RouteBuilder';
 
 const app = express();
 app.use(express.json());
 
-const userController = container.get<UserController>(TYPES.UserController);
-
-app.get("/users", (req, res) => userController.getAllUsers(req, res));
-app.get("/users/:id", (req, res) => userController.getUserById(req, res));
-app.post("/users", (req, res) => userController.createUser(req, res));
-app.get("/addNextUser", (req, res) => userController.addNextUser(req, res));
+container.get<RouteBuilder>(TYPES.RouteBuilder).registerRoutes(app);
 
 const botService = container.get<MineflayerBotService>(TYPES.BotService);
 
