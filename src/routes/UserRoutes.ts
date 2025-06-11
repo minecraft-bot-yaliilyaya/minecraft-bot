@@ -13,9 +13,9 @@ export class UserRoutes implements IRoute {
         @inject(TYPES.Controller.UserController) private controller: UserController
     ) {
         this.router.get("", this.controller.getAllUsers.bind(this.controller));
+        this.router.get("/add", this.controller.addNextUser.bind(this.controller));
         this.router.get("/:id", this.controller.getUserById.bind(this.controller));
         this.router.post("", this.controller.createUser.bind(this.controller));
-        // this.router.get("add", this.controller.addNextUser.bind(this.controller));
     }
 
 }
