@@ -1,26 +1,35 @@
 import { inject, injectable } from "inversify";
-import { createBot } from 'mineflayer'
-import { MINEFLAYER_CONFIG } from "../../config/mineflayer";
 import {TYPES} from "../container/types";
 import {MineflayerBotBuilder} from "../builder/MineflayerBotBuilder";
 
 @injectable()
 export class MineflayerBotService {
+
+    private bot = null;
+
     constructor(
         @inject(TYPES.MineflayerBotBuilder) private mineflayerBotBuilder: MineflayerBotBuilder
     ) {
     }
 
     async init () {
-        const bot = this.mineflayerBotBuilder.createBot()
+        if (this.bot) {
+            return;
+        }
+        const that = this;
+        this.bot = this.mineflayerBotBuilder.createBot()
 
-        bot.on('chat', (username, message) => {
-            if (username === bot.username) return
-            bot.chat(message)
+        this.bot.on('chat', (username, message) => {
+            if (username === that.bot.username) return
+            that.bot.chat(message)
         })
 
 // Log errors and kick reasons:
-        bot.on('kicked', console.log)
-        bot.on('error', console.log)
+        this.bot.on('kicked', console.log)
+        this.bot.on('error', console.log)
+    }
+
+    public getBot() {
+        return this.bot;
     }
 }
