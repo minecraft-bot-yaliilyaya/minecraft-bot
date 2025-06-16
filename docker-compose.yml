@@ -13,6 +13,7 @@ services:
     command: "npm run dev"
     extra_hosts:
       - host.docker.internal:host-gateway
+      - minecraft-server:192.168.0.103
     #command: "tail -f README.md"
     #tty: true
     #  - /app/node_modules  # Исключаем перезапись node_modules

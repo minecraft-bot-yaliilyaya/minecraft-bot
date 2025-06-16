@@ -13,7 +13,7 @@ export class MineflayerBotBuilder {
             // auth: MINEFLAYER_CONFIG.auth,         // for offline mode servers, you can set this to 'offline'
             // port: MINEFLAYER_CONFIG.port,         // set if you need a port that isn't 25565
             // version: MINEFLAYER_CONFIG.version    // only set if you need a specific version or snapshot (ie: "1.8.9" or "1.16.5"), otherwise it's set automatically
-            host: 'host.docker.internal', // minecraft server ip
+            host: 'minecraft-server', // minecraft server ip
             username: 'agent-007',        // username to join as if auth is `offline`, else a unique identifier for this account.
                                           // Switch if you want to change accounts
             auth: 'offline',              // for offline mode servers, you can set this to 'offline'
