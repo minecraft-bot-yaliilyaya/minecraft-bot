@@ -18,6 +18,8 @@
     "express": "^5.1.0",
     "inversify": "^7.5.1",
     "mineflayer": "^4.25.0",
+    "mineflayer-pathfinder": "^2.4.5",
+    "node-enumerable": "^6.0.0",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
