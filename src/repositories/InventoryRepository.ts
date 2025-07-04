@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 
 @injectable()
-export class InterfaceRepository {
+export class InventoryRepository {
 
 }

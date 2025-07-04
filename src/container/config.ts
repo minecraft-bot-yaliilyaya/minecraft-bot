@@ -10,8 +10,8 @@ import {RouteBuilder} from "../routes/RouteBuilder";
 import {UserRoutes} from "../routes/mapping/UserRoutes";
 import {DefaultController} from "../controllers/DefaultController";
 import {DefaultRoutes} from "../routes/mapping/DefaultRoutes";
-import {InterfaceController} from "../controllers/InterfaceController";
-import {InterfaceMapping} from "../routes/mapping/InterfaceMapping";
+import {InventoryController} from "../controllers/InventoryController";
+import {InventoryMapping} from "../routes/mapping/InventoryMapping";
 
 const container = new Container();
 
@@ -25,11 +25,11 @@ container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository);
 container.bind<RouteBuilder>(TYPES.RouteBuilder).to(RouteBuilder);
 container.bind<DefaultRoutes>(TYPES.Routes.DefaultRoutes).to(DefaultRoutes);
 container.bind<UserRoutes>(TYPES.Routes.UserRoutes).to(UserRoutes);
-container.bind<InterfaceMapping>(TYPES.Routes.InterfaceMapping).to(InterfaceMapping);
+container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapping);
 
 // Controller
 container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController);
 container.bind<UserController>(TYPES.Controller.UserController).to(UserController);
-container.bind<InterfaceController>(TYPES.Controller.InterfaceController).to(InterfaceController);
+container.bind<InventoryController>(TYPES.Controller.InventoryController).to(InventoryController);
 
 export { container };

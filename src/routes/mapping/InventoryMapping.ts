@@ -2,15 +2,16 @@ import { Router } from 'express';
 import { IRoute } from '../routes.interface';
 import {TYPES} from "../../container/types";
 import {inject, injectable} from "inversify";
-import {InterfaceController} from "../../controllers/InterfaceController";
+import {InventoryController} from "../../controllers/InventoryController";
+
 
 @injectable()
-export class InterfaceMapping implements IRoute {
-    public path = '/interface';
+export class InventoryMapping implements IRoute {
+    public path = '/inventory';
     public router = Router();
 
     constructor(
-        @inject(TYPES.Controller.InterfaceController) private controller: InterfaceController
+        @inject(TYPES.Controller.InventoryController) private controller: InventoryController
     ) {
         // this.router.get("", this.controller.getAllUsers.bind(this.controller));
         // this.router.get("/add", this.controller.addNextUser.bind(this.controller));
