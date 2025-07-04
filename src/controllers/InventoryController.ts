@@ -14,4 +14,9 @@ export class InventoryController {
         const items = this.inventoryRepository.findAll();
         res.json(items);
     }
+
+    async findGroupBySlot(req: Request, res: Response) {
+        const items = this.inventoryRepository.findGroupBySlot();
+        res.json(items);
+    }
 }
