@@ -37,6 +37,6 @@ export class MineflayerBotService {
 
     public includeThat45Slot() {
         return require('minecraft-data')(this.bot?.version).isNewerOrEqualTo('1.9') &&
-            this.bot?.inventory.slots[45]
+            this.bot?.inventory?.slots[45]
     }
 }
