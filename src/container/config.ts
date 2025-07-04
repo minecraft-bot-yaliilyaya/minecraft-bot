@@ -13,6 +13,8 @@ import {DefaultRoutes} from "../routes/mapping/DefaultRoutes";
 import {InventoryController} from "../controllers/InventoryController";
 import {InventoryMapping} from "../routes/mapping/InventoryMapping";
 
+import {InventoryRepository} from "../repository/InventoryRepository";
+
 const container = new Container();
 
 container.bind<MineflayerBotService>(TYPES.BotService).to(MineflayerBotService);
@@ -31,5 +33,8 @@ container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapp
 container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController);
 container.bind<UserController>(TYPES.Controller.UserController).to(UserController);
 container.bind<InventoryController>(TYPES.Controller.InventoryController).to(InventoryController);
+
+// Repository
+container.bind<InventoryRepository>(TYPES.Repository.InventoryRepository).to(InventoryRepository);
 
 export { container };

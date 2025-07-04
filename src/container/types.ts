@@ -16,6 +16,9 @@ const TYPES = {
         DefaultController: Symbol.for("ControllerDefaultController"),
         UserController: Symbol.for("UserController"),
         InventoryController: Symbol.for("InventoryController"),
+    },
+    Repository: {
+        InventoryRepository: Symbol.for("InventoryRepository"),
     }
 };
 
