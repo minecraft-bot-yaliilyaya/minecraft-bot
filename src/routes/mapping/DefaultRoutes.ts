@@ -1,9 +1,8 @@
 import { Router } from 'express';
-import { IRoute } from './routes.interface';
-import { UserController } from '../controllers/UserController';
-import {TYPES} from "../container/types";
+import { IRoute } from '../routes.interface';
+import {TYPES} from "../../container/types";
 import {inject, injectable} from "inversify";
-import {DefaultController} from "../controllers/DefaultController";
+import {DefaultController} from "../../controllers/DefaultController";
 
 @injectable()
 export class DefaultRoutes implements IRoute {

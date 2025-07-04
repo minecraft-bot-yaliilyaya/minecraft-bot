@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { IRoute } from './routes.interface';
-import { UserController } from '../controllers/UserController';
-import {TYPES} from "../container/types";
+import { IRoute } from '../routes.interface';
+import { UserController } from '../../controllers/UserController';
+import {TYPES} from "../../container/types";
 import {inject, injectable} from "inversify";
 
 @injectable()
