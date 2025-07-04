@@ -1,11 +1,12 @@
 import { inject, injectable } from "inversify";
 import {TYPES} from "../container/types";
 import {MineflayerBotBuilder} from "../builder/MineflayerBotBuilder";
+import {Bot} from "mineflayer";
 
 @injectable()
 export class MineflayerBotService {
 
-    private bot = null;
+    private bot: Bot|null = null;
 
     constructor(
         @inject(TYPES.MineflayerBotBuilder) private mineflayerBotBuilder: MineflayerBotBuilder
@@ -20,8 +21,8 @@ export class MineflayerBotService {
         this.bot = this.mineflayerBotBuilder.createBot()
 
         this.bot.on('chat', (username, message) => {
-            if (username === that.bot.username) return
-            that.bot.chat(message)
+            if (username === that.bot?.username) return
+            that.bot?.chat(message)
         })
 
 // Log errors and kick reasons:
@@ -29,7 +30,7 @@ export class MineflayerBotService {
         this.bot.on('error', console.log)
     }
 
-    public getBot() {
+    public getBot(): Bot|null {
         return this.bot;
     }
 }
