@@ -31,6 +31,12 @@ export class MineflayerBotService {
     }
 
     public getBot(): Bot|null {
+        this.init();
         return this.bot;
+    }
+
+    public includeThat45Slot() {
+        return require('minecraft-data')(this.bot?.version).isNewerOrEqualTo('1.9') &&
+            this.bot?.inventory.slots[45]
     }
 }
