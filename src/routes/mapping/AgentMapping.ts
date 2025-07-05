@@ -15,7 +15,9 @@ export class AgentMapping implements IRoute {
     constructor(
         @inject(TYPES.Controller.AgentController) private controller: AgentController
     ) {
-        this.router.get("/equip", this.controller.equip.bind(this.controller));
+        this.router.get("/equip/:foodName", this.controller.equip.bind(this.controller));
+        this.router.get("/activateItem", this.controller.activateItem.bind(this.controller));
+        this.router.get("/eatFood/:foodName", this.controller.eatFood.bind(this.controller));
     }
 
 }

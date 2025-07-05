@@ -22,30 +22,30 @@ import {AgentService} from "../services/AgentService";
 
 const container = new Container();
 
-container.bind<MineflayerBotBuilder>(TYPES.MineflayerBotBuilder).to(MineflayerBotBuilder);
+container.bind<MineflayerBotBuilder>(TYPES.MineflayerBotBuilder).to(MineflayerBotBuilder).inSingletonScope();
 
 // Service
-container.bind<UserService>(TYPES.UserService).to(UserService);
-container.bind<AgentService>(TYPES.Service.AgentService).to(AgentService);
-container.bind<MineflayerBotService>(TYPES.BotService).to(MineflayerBotService);
+container.bind<UserService>(TYPES.UserService).to(UserService).inSingletonScope();
+container.bind<AgentService>(TYPES.Service.AgentService).to(AgentService).inSingletonScope();
+container.bind<MineflayerBotService>(TYPES.BotService).to(MineflayerBotService).inSingletonScope();
 
 // Route
-container.bind<RouteBuilder>(TYPES.RouteBuilder).to(RouteBuilder);
-container.bind<DefaultRoutes>(TYPES.Routes.DefaultRoutes).to(DefaultRoutes);
-container.bind<UserRoutes>(TYPES.Routes.UserRoutes).to(UserRoutes);
-container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapping);
-container.bind<InfoMapping>(TYPES.Routes.InfoMapping).to(InfoMapping);
-container.bind<AgentMapping>(TYPES.Routes.AgentMapping).to(AgentMapping);
+container.bind<RouteBuilder>(TYPES.RouteBuilder).to(RouteBuilder).inSingletonScope();
+container.bind<DefaultRoutes>(TYPES.Routes.DefaultRoutes).to(DefaultRoutes).inSingletonScope();
+container.bind<UserRoutes>(TYPES.Routes.UserRoutes).to(UserRoutes).inSingletonScope();
+container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapping).inSingletonScope();
+container.bind<InfoMapping>(TYPES.Routes.InfoMapping).to(InfoMapping).inSingletonScope();
+container.bind<AgentMapping>(TYPES.Routes.AgentMapping).to(AgentMapping).inSingletonScope();
 
 // Controller
-container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController);
-container.bind<UserController>(TYPES.Controller.UserController).to(UserController);
-container.bind<InventoryController>(TYPES.Controller.InventoryController).to(InventoryController);
-container.bind<InfoController>(TYPES.Controller.InfoController).to(InfoController);
-container.bind<AgentController>(TYPES.Controller.AgentController).to(AgentController);
+container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController).inSingletonScope();
+container.bind<UserController>(TYPES.Controller.UserController).to(UserController).inSingletonScope();
+container.bind<InventoryController>(TYPES.Controller.InventoryController).to(InventoryController).inSingletonScope();
+container.bind<InfoController>(TYPES.Controller.InfoController).to(InfoController).inSingletonScope();
+container.bind<AgentController>(TYPES.Controller.AgentController).to(AgentController).inSingletonScope();
 
 // Repository
-container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository);
-container.bind<InventoryRepository>(TYPES.Repository.InventoryRepository).to(InventoryRepository);
+container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
+container.bind<InventoryRepository>(TYPES.Repository.InventoryRepository).to(InventoryRepository).inSingletonScope();
 
 export { container };

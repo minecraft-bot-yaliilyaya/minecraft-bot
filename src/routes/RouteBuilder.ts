@@ -27,6 +27,7 @@ export class RouteBuilder {
             this.defaultRoutes,
             this.inventoryRoutes,
             this.infoMapping,
+            this.agentMapping,
         ];
     }
 

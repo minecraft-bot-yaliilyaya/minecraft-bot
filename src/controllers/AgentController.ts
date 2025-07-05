@@ -14,8 +14,8 @@ export class AgentController {
     ) {}
 
     async equip(req: Request, res: Response) {
-        const foodName = req.params.foodName;
 
+        const foodName = req.params.foodName;
         await this.agentService.equip(foodName);
 
         res.json(['ok']);

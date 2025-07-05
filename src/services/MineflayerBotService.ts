@@ -14,9 +14,10 @@ export class MineflayerBotService {
     }
 
     async init () {
-        if (this.bot) {
+        if (!!this.bot) {
             return;
         }
+
         const that = this;
         this.bot = this.mineflayerBotBuilder.createBot()
 

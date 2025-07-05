@@ -17,7 +17,8 @@ export class AgentService {
         const food: Item | null = bot?.inventory?.items()?.find(item => item.name === foodName) ?? null;
 
         if (food) {
-            bot?.equip(food, 'hand');
+            await bot?.equip(food, 'hand');
+            await new Promise(resolve => setTimeout(resolve, 500));
         } else {
             console.log('В инвентаре нет ' + foodName);
         }
@@ -30,7 +31,7 @@ export class AgentService {
             console.log('Бот ест хлеб...');
 
             // Ждём окончания анимации (примерно 2 секунды для хлеба)
-            new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise(resolve => setTimeout(resolve, 2000));
             console.log('Бот закончил есть хлеб!');
             return true;
         } catch (err) {
