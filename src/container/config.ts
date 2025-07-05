@@ -23,6 +23,8 @@ import {FindController} from "../controllers/FindController";
 import {FindMapping} from "../routes/mapping/FindMapping";
 import {DigController} from "../controllers/DigController";
 import {DigMapping} from "../routes/mapping/DigMapping";
+import {MoveMapping} from "../routes/mapping/MoveMapping";
+import {MoveController} from "../controllers/MoveController";
 
 const container = new Container();
 
@@ -42,6 +44,7 @@ container.bind<InfoMapping>(TYPES.Routes.InfoMapping).to(InfoMapping).inSingleto
 container.bind<AgentMapping>(TYPES.Routes.AgentMapping).to(AgentMapping).inSingletonScope();
 container.bind<FindMapping>(TYPES.Routes.FindMapping).to(FindMapping).inSingletonScope();
 container.bind<DigMapping>(TYPES.Routes.DigMapping).to(DigMapping).inSingletonScope();
+container.bind<MoveMapping>(TYPES.Routes.MoveMapping).to(MoveMapping).inSingletonScope();
 
 // Controller
 container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController).inSingletonScope();
@@ -51,6 +54,7 @@ container.bind<InfoController>(TYPES.Controller.InfoController).to(InfoControlle
 container.bind<AgentController>(TYPES.Controller.AgentController).to(AgentController).inSingletonScope();
 container.bind<FindController>(TYPES.Controller.FindController).to(FindController).inSingletonScope();
 container.bind<DigController>(TYPES.Controller.DigController).to(DigController).inSingletonScope();
+container.bind<MoveController>(TYPES.Controller.MoveController).to(MoveController).inSingletonScope();
 
 // Repository
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();

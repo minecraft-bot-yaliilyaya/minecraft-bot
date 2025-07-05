@@ -14,6 +14,7 @@ const TYPES = {
         AgentMapping: Symbol.for("AgentMapping"),
         FindMapping: Symbol.for("FindMapping"),
         DigMapping: Symbol.for("DigMapping"),
+        MoveMapping: Symbol.for("MoveMapping"),
     },
     Controller: {
         DefaultController: Symbol.for("ControllerDefaultController"),
@@ -23,6 +24,7 @@ const TYPES = {
         AgentController: Symbol.for("AgentController"),
         FindController: Symbol.for("FindController"),
         DigController: Symbol.for("DigController"),
+        MoveController: Symbol.for("MoveController"),
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),
