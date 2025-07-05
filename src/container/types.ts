@@ -13,6 +13,7 @@ const TYPES = {
         InfoMapping: Symbol.for("InfoMapping"),
         AgentMapping: Symbol.for("AgentMapping"),
         FindMapping: Symbol.for("FindMapping"),
+        DigMapping: Symbol.for("DigMapping"),
     },
     Controller: {
         DefaultController: Symbol.for("ControllerDefaultController"),
@@ -21,6 +22,7 @@ const TYPES = {
         InfoController: Symbol.for("InfoController"),
         AgentController: Symbol.for("AgentController"),
         FindController: Symbol.for("FindController"),
+        DigController: Symbol.for("DigController"),
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),

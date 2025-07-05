@@ -21,6 +21,8 @@ import {AgentMapping} from "../routes/mapping/AgentMapping";
 import {AgentService} from "../services/AgentService";
 import {FindController} from "../controllers/FindController";
 import {FindMapping} from "../routes/mapping/FindMapping";
+import {DigController} from "../controllers/DigController";
+import {DigMapping} from "../routes/mapping/DigMapping";
 
 const container = new Container();
 
@@ -39,6 +41,7 @@ container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapp
 container.bind<InfoMapping>(TYPES.Routes.InfoMapping).to(InfoMapping).inSingletonScope();
 container.bind<AgentMapping>(TYPES.Routes.AgentMapping).to(AgentMapping).inSingletonScope();
 container.bind<FindMapping>(TYPES.Routes.FindMapping).to(FindMapping).inSingletonScope();
+container.bind<DigMapping>(TYPES.Routes.DigMapping).to(DigMapping).inSingletonScope();
 
 // Controller
 container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController).inSingletonScope();
@@ -47,6 +50,7 @@ container.bind<InventoryController>(TYPES.Controller.InventoryController).to(Inv
 container.bind<InfoController>(TYPES.Controller.InfoController).to(InfoController).inSingletonScope();
 container.bind<AgentController>(TYPES.Controller.AgentController).to(AgentController).inSingletonScope();
 container.bind<FindController>(TYPES.Controller.FindController).to(FindController).inSingletonScope();
+container.bind<DigController>(TYPES.Controller.DigController).to(DigController).inSingletonScope();
 
 // Repository
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
