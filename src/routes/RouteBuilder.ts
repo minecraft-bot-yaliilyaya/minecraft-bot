@@ -10,6 +10,7 @@ import {DefaultRoutes} from "./mapping/DefaultRoutes";
 import {InventoryMapping} from "./mapping/InventoryMapping";
 import {InfoMapping} from "./mapping/InfoMapping";
 import {AgentMapping} from "./mapping/AgentMapping";
+import {FindMapping} from "./mapping/FindMapping";
 
 @injectable()
 export class RouteBuilder {
@@ -20,7 +21,8 @@ export class RouteBuilder {
         @inject(TYPES.Routes.DefaultRoutes) private defaultRoutes: DefaultRoutes,
         @inject(TYPES.Routes.InventoryMapping) private inventoryRoutes: InventoryMapping,
         @inject(TYPES.Routes.InfoMapping) private infoMapping: InfoMapping,
-        @inject(TYPES.Routes.AgentMapping) private agentMapping: AgentMapping
+        @inject(TYPES.Routes.AgentMapping) private agentMapping: AgentMapping,
+        @inject(TYPES.Routes.FindMapping) private findMapping: FindMapping
     ) {
         this.routes = [
             this.userRoutes,
@@ -28,6 +30,7 @@ export class RouteBuilder {
             this.inventoryRoutes,
             this.infoMapping,
             this.agentMapping,
+            this.findMapping,
         ];
     }
 

@@ -1,6 +1,3 @@
-import {MineflayerBotBuilder} from "../builder/MineflayerBotBuilder";
-import {InfoController} from "../controllers/InfoController";
-import {InfoMapping} from "../routes/mapping/InfoMapping";
 
 const TYPES = {
     BotService: Symbol.for("MineflayerBotService"),
@@ -15,6 +12,7 @@ const TYPES = {
         InventoryMapping: Symbol.for("RoutesInventoryMapping"),
         InfoMapping: Symbol.for("InfoMapping"),
         AgentMapping: Symbol.for("AgentMapping"),
+        FindMapping: Symbol.for("FindMapping"),
     },
     Controller: {
         DefaultController: Symbol.for("ControllerDefaultController"),
@@ -22,6 +20,7 @@ const TYPES = {
         InventoryController: Symbol.for("InventoryController"),
         InfoController: Symbol.for("InfoController"),
         AgentController: Symbol.for("AgentController"),
+        FindController: Symbol.for("FindController"),
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),

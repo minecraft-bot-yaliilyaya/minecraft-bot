@@ -19,6 +19,8 @@ import {InventoryRepository} from "../repository/InventoryRepository";
 import {AgentController} from "../controllers/AgentController";
 import {AgentMapping} from "../routes/mapping/AgentMapping";
 import {AgentService} from "../services/AgentService";
+import {FindController} from "../controllers/FindController";
+import {FindMapping} from "../routes/mapping/FindMapping";
 
 const container = new Container();
 
@@ -36,6 +38,7 @@ container.bind<UserRoutes>(TYPES.Routes.UserRoutes).to(UserRoutes).inSingletonSc
 container.bind<InventoryMapping>(TYPES.Routes.InventoryMapping).to(InventoryMapping).inSingletonScope();
 container.bind<InfoMapping>(TYPES.Routes.InfoMapping).to(InfoMapping).inSingletonScope();
 container.bind<AgentMapping>(TYPES.Routes.AgentMapping).to(AgentMapping).inSingletonScope();
+container.bind<FindMapping>(TYPES.Routes.FindMapping).to(FindMapping).inSingletonScope();
 
 // Controller
 container.bind<DefaultController>(TYPES.Controller.DefaultController).to(DefaultController).inSingletonScope();
@@ -43,6 +46,7 @@ container.bind<UserController>(TYPES.Controller.UserController).to(UserControlle
 container.bind<InventoryController>(TYPES.Controller.InventoryController).to(InventoryController).inSingletonScope();
 container.bind<InfoController>(TYPES.Controller.InfoController).to(InfoController).inSingletonScope();
 container.bind<AgentController>(TYPES.Controller.AgentController).to(AgentController).inSingletonScope();
+container.bind<FindController>(TYPES.Controller.FindController).to(FindController).inSingletonScope();
 
 // Repository
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
