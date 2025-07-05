@@ -2,10 +2,6 @@ import { Router } from 'express';
 import { IRoute } from '../routes.interface';
 import {TYPES} from "../../container/types";
 import {inject, injectable} from "inversify";
-import {InventoryController} from "../../controllers/InventoryController";
-import {InfoController} from "../../controllers/InfoController";
-import {AgentController} from "../../controllers/AgentController";
-import {FindController} from "../../controllers/FindController";
 import {DigController} from "../../controllers/DigController";
 
 
@@ -17,7 +13,8 @@ export class DigMapping implements IRoute {
     constructor(
         @inject(TYPES.Controller.DigController) private controller: DigController
     ) {
-        this.router.get("/item", this.controller.item.bind(this.controller));
+        this.router.get("/item", this.controller.itemForm.bind(this.controller));
+        this.router.post("/item", this.controller.item.bind(this.controller));
     }
 
 }
