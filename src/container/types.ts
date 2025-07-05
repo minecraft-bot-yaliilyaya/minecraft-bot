@@ -14,15 +14,20 @@ const TYPES = {
         DefaultRoutes: Symbol.for("RoutesDefaultRoutes"),
         InventoryMapping: Symbol.for("RoutesInventoryMapping"),
         InfoMapping: Symbol.for("InfoMapping"),
+        AgentMapping: Symbol.for("AgentMapping"),
     },
     Controller: {
         DefaultController: Symbol.for("ControllerDefaultController"),
         UserController: Symbol.for("UserController"),
         InventoryController: Symbol.for("InventoryController"),
         InfoController: Symbol.for("InfoController"),
+        AgentController: Symbol.for("AgentController"),
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),
+    },
+    Service: {
+        AgentService: Symbol.for("AgentService"),
     }
 };
 

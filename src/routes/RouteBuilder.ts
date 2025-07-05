@@ -9,6 +9,7 @@ import { UserRoutes } from './mapping/UserRoutes';
 import {DefaultRoutes} from "./mapping/DefaultRoutes";
 import {InventoryMapping} from "./mapping/InventoryMapping";
 import {InfoMapping} from "./mapping/InfoMapping";
+import {AgentMapping} from "./mapping/AgentMapping";
 
 @injectable()
 export class RouteBuilder {
@@ -18,7 +19,8 @@ export class RouteBuilder {
         @inject(TYPES.Routes.UserRoutes) private userRoutes: UserRoutes,
         @inject(TYPES.Routes.DefaultRoutes) private defaultRoutes: DefaultRoutes,
         @inject(TYPES.Routes.InventoryMapping) private inventoryRoutes: InventoryMapping,
-        @inject(TYPES.Routes.InfoMapping) private infoMapping: InfoMapping
+        @inject(TYPES.Routes.InfoMapping) private infoMapping: InfoMapping,
+        @inject(TYPES.Routes.AgentMapping) private agentMapping: AgentMapping
     ) {
         this.routes = [
             this.userRoutes,
