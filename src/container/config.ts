@@ -16,6 +16,8 @@ import {InfoController} from "../controllers/InfoController";
 import {InfoMapping} from "../routes/mapping/InfoMapping";
 
 import {InventoryRepository} from "../repository/InventoryRepository";
+import {WorldItemRepository} from "../repository/WorldItemRepository";
+
 import {AgentController} from "../controllers/AgentController";
 import {AgentMapping} from "../routes/mapping/AgentMapping";
 import {AgentService} from "../services/AgentService";
@@ -59,5 +61,6 @@ container.bind<MoveController>(TYPES.Controller.MoveController).to(MoveControlle
 // Repository
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
 container.bind<InventoryRepository>(TYPES.Repository.InventoryRepository).to(InventoryRepository).inSingletonScope();
+container.bind<WorldItemRepository>(TYPES.Repository.WorldItemRepository).to(WorldItemRepository).inSingletonScope();
 
 export { container };

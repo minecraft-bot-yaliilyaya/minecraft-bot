@@ -10,8 +10,8 @@ export class DigController {
         res.json(req.body);
     }
 
-    async itemForm(req: Request, res: Response) {
-        const response = await axios.post('http://localhost:3000/dig/item', {'item': ["qwewqeqweq", "qwewqeqweq"]}, {
+    async itemTest(req: Request, res: Response) {
+        const response = await axios.post('http://localhost:3000/dig/item', {'item': ["oak_log"]}, {
             headers: {
                 'Content-Type': 'application/json',
             },

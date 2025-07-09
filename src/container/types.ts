@@ -28,6 +28,7 @@ const TYPES = {
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),
+        WorldItemRepository: Symbol.for("WorldItemRepository"),
     },
     Service: {
         AgentService: Symbol.for("AgentService"),
