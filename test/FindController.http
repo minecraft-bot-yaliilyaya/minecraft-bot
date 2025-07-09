@@ -1,0 +1,11 @@
+### Send POST request with json body
+POST http://localhost:3000/find/item
+Content-Type: application/json
+
+{"items": ["oak_log"]}
+
+### Send POST request with json body
+POST http://localhost:3000/find/material
+Content-Type: application/json
+
+{"material":"wood"}
