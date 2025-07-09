@@ -1,6 +1,5 @@
 import { inject, injectable } from 'inversify';
 import { Request, Response } from 'express';
-import axios from "axios";
 import {TYPES} from "../container/types";
 import {WorldItemRepository} from "../repository/WorldItemRepository";
 
@@ -17,12 +16,11 @@ export class FindController {
 
         res.json(item);
     }
-    async itemTest(req: Request, res: Response) {
-        const response = await axios.post('http://localhost:3000/find/item', {'items': ["oak_log"]}, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        res.json(response.data);
+
+    async material(req: Request, res: Response) {
+
+        const item = this.worldItemRepository.findByMaterial(req.body.material);
+
+        res.json(item);
     }
 }

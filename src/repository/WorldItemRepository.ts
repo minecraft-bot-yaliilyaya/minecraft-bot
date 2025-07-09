@@ -22,4 +22,16 @@ export class WorldItemRepository {
 
         return bot?.findBlock(options);
     }
+
+    public findByMaterial(material: string) {
+        const bot = this.botService.getBot();
+
+        const options: FindBlockOptions = {
+            count: 100,
+            maxDistance: 252,
+            matching: (block) => material == block.material
+        };
+
+        return bot?.findBlock(options);
+    }
 }
