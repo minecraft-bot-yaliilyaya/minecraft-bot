@@ -1,6 +1,5 @@
 import {injectable} from "inversify";
 import {Bot, createBot} from "mineflayer";
-import {MINEFLAYER_CONFIG} from "../../config/mineflayer";
 
 @injectable()
 export class MineflayerBotBuilder {

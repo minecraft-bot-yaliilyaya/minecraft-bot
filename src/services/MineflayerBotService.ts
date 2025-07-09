@@ -2,6 +2,7 @@ import { inject, injectable } from "inversify";
 import {TYPES} from "../container/types";
 import {MineflayerBotBuilder} from "../builder/MineflayerBotBuilder";
 import {Bot} from "mineflayer";
+import { pathfinder } from 'mineflayer-pathfinder'
 
 @injectable()
 export class MineflayerBotService {
@@ -20,6 +21,7 @@ export class MineflayerBotService {
 
         const that = this;
         this.bot = this.mineflayerBotBuilder.createBot()
+        this.bot.loadPlugin(pathfinder);
 
         this.bot.on('chat', (username, message) => {
             if (username === that.bot?.username) return

@@ -1,0 +1,9 @@
+### Send POST request with json body
+POST http://localhost:3000/move/to
+Content-Type: application/json
+
+{"point":{
+  "x": 317,
+  "y": 68,
+  "z": -332
+}}

@@ -12,7 +12,7 @@ container.get<RouteBuilder>(TYPES.RouteBuilder).registerRoutes(app);
 
 const botService = container.get<MineflayerBotService>(TYPES.BotService);
 
-// botService.init();
+//botService.init();
 
 const PORT = 3000;
 app.listen(PORT, () => {

@@ -13,7 +13,7 @@ export class MoveMapping implements IRoute {
     constructor(
         @inject(TYPES.Controller.MoveController) private controller: MoveController
     ) {
-        this.router.get("/to", this.controller.to.bind(this.controller));
+        this.router.post("/to", this.controller.to.bind(this.controller));
     }
 
 }
