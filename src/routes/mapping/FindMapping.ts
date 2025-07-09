@@ -15,6 +15,7 @@ export class FindMapping implements IRoute {
     ) {
         this.router.post("/item", this.controller.item.bind(this.controller));
         this.router.post("/material", this.controller.material.bind(this.controller));
+        this.router.post("/aria", this.controller.aria.bind(this.controller));
     }
 
 }

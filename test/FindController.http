@@ -9,3 +9,13 @@ POST http://localhost:3000/find/material
 Content-Type: application/json
 
 {"material":"wood"}
+
+### Send POST request with json body
+POST http://localhost:3000/find/aria
+Content-Type: application/json
+
+{"point":{
+  "x": 317,
+  "y": 68,
+  "z": -332
+}}
