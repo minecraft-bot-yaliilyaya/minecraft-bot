@@ -1,7 +1,6 @@
 import { inject, injectable } from "inversify";
 import {Request, Response} from "express";
 import {TYPES} from "../container/types";
-import {InventoryRepository} from "../repository/InventoryRepository";
 import {MineflayerBotService} from "../services/MineflayerBotService";
 
 
