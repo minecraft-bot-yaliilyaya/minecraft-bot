@@ -17,4 +17,13 @@ export class DigService {
         const block: Block|null = bot?.blockAt(blockPosition) ?? null;
         return block ? bot?.canDigBlock(block) ?? false : false;
     }
+
+    async digBlock(itemPosition: Vec3) {
+        const bot = this.botService.getBot();
+        const block: Block|null = bot?.blockAt(itemPosition) ?? null;
+
+        if (block !== null) {
+            await bot?.dig(block);
+        }
+    }
 }

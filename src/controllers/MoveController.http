@@ -3,7 +3,7 @@ POST http://localhost:3000/move/to
 Content-Type: application/json
 
 {"point":{
-  "x": 317,
-  "y": 68,
-  "z": -332
+  "x": 319,
+  "y": 70,
+  "z": -333
 }}

@@ -25,12 +25,24 @@ export class DigController {
         const itemPosition = this.worldItemRepository.findFirstByArea(point, req.body.items);
 
         if (!itemPosition) {
-            res.json({error: "resource_not_found"});
+            res.json({
+                error: "ERR_INVALID_TARGET",
+            });
             return;
         }
 
-        const canDigBlock =  await this.digService.canDigBlock(itemPosition);
-
-        res.json(canDigBlock);
+        const canDigBlock = await this.digService.canDigBlock(itemPosition);
+        if (!canDigBlock) {
+            res.json({
+                error: "ERR_NOT_IN_RANGE",
+                position: itemPosition
+            });
+            return;
+        }
+        await this.digService.digBlock(itemPosition);
+        res.json({
+            success: true,
+            position: itemPosition
+        });
     }
 }
