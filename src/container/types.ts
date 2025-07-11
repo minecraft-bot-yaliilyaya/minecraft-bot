@@ -32,6 +32,7 @@ const TYPES = {
     },
     Service: {
         AgentService: Symbol.for("AgentService"),
+        DigService: Symbol.for("DigService"),
     }
 };
 

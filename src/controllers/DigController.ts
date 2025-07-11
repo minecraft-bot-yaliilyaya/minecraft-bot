@@ -4,13 +4,15 @@ import axios from 'axios';
 import {TYPES} from "../container/types";
 import {WorldItemRepository} from "../repository/WorldItemRepository";
 import {Vec3} from "vec3";
+import {DigService} from "../services/DigService";
 
 
 @injectable()
 export class DigController {
 
     constructor(
-        @inject(TYPES.Repository.WorldItemRepository) private worldItemRepository: WorldItemRepository
+        @inject(TYPES.Repository.WorldItemRepository) private worldItemRepository: WorldItemRepository,
+        @inject(TYPES.Service.DigService) private digService: DigService
     ) {}
 
     async item(req: Request, res: Response) {
@@ -20,8 +22,15 @@ export class DigController {
             req.body.point.y,
             req.body.point.z);
 
-        const item = this.worldItemRepository.findFirstByArea(point, req.body.items);
+        const itemPosition = this.worldItemRepository.findFirstByArea(point, req.body.items);
 
-        res.json(item);
+        if (!itemPosition) {
+            res.json({error: "resource_not_found"});
+            return;
+        }
+
+        const canDigBlock =  await this.digService.canDigBlock(itemPosition);
+
+        res.json(canDigBlock);
     }
 }

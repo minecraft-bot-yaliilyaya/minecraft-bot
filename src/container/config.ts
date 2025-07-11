@@ -27,6 +27,7 @@ import {DigController} from "../controllers/DigController";
 import {DigMapping} from "../routes/mapping/DigMapping";
 import {MoveMapping} from "../routes/mapping/MoveMapping";
 import {MoveController} from "../controllers/MoveController";
+import {DigService} from "../services/DigService";
 
 const container = new Container();
 
@@ -35,6 +36,7 @@ container.bind<MineflayerBotBuilder>(TYPES.MineflayerBotBuilder).to(MineflayerBo
 // Service
 container.bind<UserService>(TYPES.UserService).to(UserService).inSingletonScope();
 container.bind<AgentService>(TYPES.Service.AgentService).to(AgentService).inSingletonScope();
+container.bind<DigService>(TYPES.Service.DigService).to(DigService).inSingletonScope();
 container.bind<MineflayerBotService>(TYPES.BotService).to(MineflayerBotService).inSingletonScope();
 
 // Route
