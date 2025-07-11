@@ -14,7 +14,6 @@ export class DigMapping implements IRoute {
         @inject(TYPES.Controller.DigController) private controller: DigController
     ) {
         this.router.post("/item", this.controller.item.bind(this.controller));
-        this.router.get("/item", this.controller.itemTest.bind(this.controller));
     }
 
 }

@@ -1,0 +1,14 @@
+### Send POST request with json body
+POST http://localhost:3000/dig/item
+Content-Type: application/json
+
+{
+  "items": [
+    "oak_log"
+  ],
+  "point": {
+    "x": 317,
+    "y": 68,
+    "z": -332
+  }
+}

@@ -72,4 +72,18 @@ export class WorldItemRepository {
 
         return blocks;
     }
+
+    findFirstByArea(point: Vec3, names: string[]): Vec3[]
+    {
+        const bot = this.botService.getBot();
+
+        const options: FindBlockOptions = {
+            count: 1,
+            maxDistance: 5,
+            point: point,
+            matching: (block) => (names.some((name) => name == block.name))
+        };
+
+        return bot?.findBlocks(options) ?? [];
+    }
 }
