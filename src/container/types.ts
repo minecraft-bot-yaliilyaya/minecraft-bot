@@ -5,7 +5,6 @@ const TYPES = {
     UserService: Symbol.for("UserService"),
     UserRepository: Symbol.for("UserRepository"),
     RouteBuilder: Symbol.for("RouteBuilder"),
-
     Routes: {
         UserRoutes: Symbol.for("RoutesUserRoutes"),
         DefaultRoutes: Symbol.for("RoutesDefaultRoutes"),
@@ -15,6 +14,7 @@ const TYPES = {
         FindMapping: Symbol.for("FindMapping"),
         DigMapping: Symbol.for("DigMapping"),
         MoveMapping: Symbol.for("MoveMapping"),
+        McDataMapping: Symbol.for("McDataMapping"),
     },
     Controller: {
         DefaultController: Symbol.for("ControllerDefaultController"),
@@ -25,10 +25,12 @@ const TYPES = {
         FindController: Symbol.for("FindController"),
         DigController: Symbol.for("DigController"),
         MoveController: Symbol.for("MoveController"),
+        McDataController: Symbol.for("McDataController"),
     },
     Repository: {
         InventoryRepository: Symbol.for("InventoryRepository"),
         WorldItemRepository: Symbol.for("WorldItemRepository"),
+        McDataRepository: Symbol.for("McDataRepository"),
     },
     Service: {
         AgentService: Symbol.for("AgentService"),

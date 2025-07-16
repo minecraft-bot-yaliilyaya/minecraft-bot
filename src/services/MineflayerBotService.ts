@@ -20,7 +20,7 @@ export class MineflayerBotService {
         }
 
         const that = this;
-        this.bot = this.mineflayerBotBuilder.createBot()
+        this.bot = await this.mineflayerBotBuilder.createBot()
         this.bot.loadPlugin(pathfinder);
 
         this.bot.on('chat', (username, message) => {
@@ -31,6 +31,7 @@ export class MineflayerBotService {
 // Log errors and kick reasons:
         this.bot.on('kicked', console.log)
         this.bot.on('error', console.log)
+        // this.bot.on('entitySpawn', console.log)
     }
 
     public getBot(): Bot|null {

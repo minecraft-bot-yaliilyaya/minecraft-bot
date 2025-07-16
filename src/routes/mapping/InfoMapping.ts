@@ -15,6 +15,7 @@ export class InfoMapping implements IRoute {
         @inject(TYPES.Controller.InfoController) private controller: InfoController
     ) {
         this.router.get("/all", this.controller.all.bind(this.controller));
+        this.router.get("/entities", this.controller.entities.bind(this.controller));
     }
 
 }
