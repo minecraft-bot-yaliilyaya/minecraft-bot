@@ -15,7 +15,12 @@ export class MoveController {
 
         const bot = this.botService.getBot();
 
-        await bot?.pathfinder?.goto(new goals.GoalNear(req.body.point.x, req.body.point.y, req.body.point.z, 2));
+        try {
+            await bot?.pathfinder?.goto(new goals.GoalNear(req.body.point.x, req.body.point.y, req.body.point.z, 2));
+        } catch (e: any) {
+            res.json([e?.message]);
+            return;
+        }
 
         res.json(['to']);
     }
