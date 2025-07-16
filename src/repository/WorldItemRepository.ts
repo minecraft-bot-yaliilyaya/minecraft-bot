@@ -42,7 +42,7 @@ export class WorldItemRepository {
 
         const options: FindBlockOptions = {
             count: 500,
-            maxDistance: 5,
+            maxDistance: 2,
             point: point,
             matching: (block) => block.name !== "air"
         };
@@ -79,7 +79,7 @@ export class WorldItemRepository {
 
         const options: FindBlockOptions = {
             count: 1,
-            maxDistance: 5,
+            maxDistance: 2,
             point: point,
             matching: (block) => (names.some((name) => name == block.name))
         };

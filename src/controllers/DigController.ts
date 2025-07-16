@@ -46,6 +46,7 @@ export class DigController {
                 position: itemPosition
             });
         } catch (e:any) {
+            console.log(e?.message);
             res.json([e?.message]);
             return;
         }
