@@ -31,6 +31,19 @@ services:
     volumes:
       - ../minecraft-agent/:/app  # Для разработки (горячая перезагрузка)
     command: "npm run dev"
+
+#  mongo:
+#    image: mongo
+#    restart: always
+#    volumes:
+#      - ./data/mongo:/data/db
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: example
+#      MONGO_INITDB_DATABASE: storage
+#    ports:
+#      - 3002:27017
+
 #  rabbitmq:
 #    image: rabbitmq:3-management
 #    ports:
