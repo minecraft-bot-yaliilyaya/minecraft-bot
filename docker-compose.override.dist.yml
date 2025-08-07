@@ -1,0 +1,9 @@
+# Данный файл переопределяет некоторые настройки контейнеров
+# для того чтобы он заработал его стоит скопировать в docker-compose.override.yml
+# `cp docker-compose.override.dist.yml docker-compose.override.yml`
+version: "3.9"
+
+services:
+  app:
+    extra_hosts:
+      - minecraft-server:192.168.0.104
