@@ -21,36 +21,3 @@ services:
     #   interval: 30s
     #   timeout: 10s
     #   retries: 3
-  agent:
-    build: dockerfile/app
-    # restart: unless-stopped
-    ports:
-      - "3001:3000"
-    environment:
-      - MONGODB_URI='mongodb://host.docker.internal:27017/minecraft'
-    volumes:
-      - ../minecraft-agent/:/app  # Для разработки (горячая перезагрузка)
-    command: "npm run dev"
-
-#  mongo:
-#    image: mongo
-#    restart: always
-#    volumes:
-#      - ./data/mongo:/data/db
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: root
-#      MONGO_INITDB_ROOT_PASSWORD: example
-#      MONGO_INITDB_DATABASE: storage
-#    ports:
-#      - 3002:27017
-
-#  rabbitmq:
-#    image: rabbitmq:3-management
-#    ports:
-#      - "5672:5672"   # AMQP порт (для клиентов)
-#      - "15672:15672"  # Web-интерфейс (логин: guest/guest)
-#    volumes:
-#      - rabbitmq_data:/var/lib/rabbitmq
-
-#volumes:
-#  rabbitmq_data:
