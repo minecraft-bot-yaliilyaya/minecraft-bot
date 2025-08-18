@@ -1,0 +1,813 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "state_mashine",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -320,
+        48
+      ],
+      "id": "4493fe63-4fcf-4dc1-8c3c-cd9ffd3cfb70",
+      "name": "Webhook",
+      "webhookId": "32e87f8e-589b-4930-aa30-da423d36d7b4"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "580b65cf-6bbe-4619-9303-83702bb1d9c8",
+                    "leftValue": "={{ $json.state }}",
+                    "rightValue": "wait",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.state }}",
+                    "rightValue": "dirt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "dc01cdb4-801c-4bf3-a7db-1799881e856f"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7568f531-5059-4c72-a577-42577f422c39",
+                    "leftValue": "={{ $json.state }}",
+                    "rightValue": "eat",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4496acd3-211a-465f-a751-c279b1d919b3",
+                    "leftValue": "={{ $json.state }}",
+                    "rightValue": "find",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6c8227f5-5df0-4792-8a7c-2db3fb164129",
+                    "leftValue": "={{ $json.state }}",
+                    "rightValue": "default",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "ad99de4f-2a2e-45eb-ad99-32a506595400",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "hHIH6jUFAbV5fFAa",
+          "mode": "list",
+          "cachedResultName": "StateMachine State Wait"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "aNumber": 0
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "aField",
+              "displayName": "aField",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "aNumber",
+              "displayName": "aNumber",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "thisFieldAcceptsAnyType",
+              "displayName": "thisFieldAcceptsAnyType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "anArray",
+              "displayName": "anArray",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "array",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        -304
+      ],
+      "id": "15920c50-665d-4a75-9f36-7ee92fe44409",
+      "name": "Execute Wait",
+      "notesInFlow": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -128
+      ],
+      "id": "ba74fb17-5fa6-4b75-b529-a8b4e6bd18bc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "wait",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        128,
+        -368
+      ],
+      "id": "6f547f95-f580-4eee-a98a-04ccea95a155",
+      "name": "Set state wait",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "state",
+        "key": "state",
+        "keyType": "string",
+        "options": {
+          "dotNotation": true
+        }
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        208,
+        48
+      ],
+      "id": "24702bb2-57c5-4da8-bbd9-3f0ab2e827de",
+      "name": "Get state",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "dirt",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        128,
+        -512
+      ],
+      "id": "faff2eb6-0242-4a67-920a-f24083fa143a",
+      "name": "Set state dirt",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "uJDKtBixhWUb5pFE",
+          "mode": "list",
+          "cachedResultName": "StateMachine State Dirt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        -144
+      ],
+      "id": "3260a043-735b-4073-ac9c-0182f42761d6",
+      "name": "Execute Dirt"
+    },
+    {
+      "parameters": {
+        "channels": "minecraft-agent-state",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redisTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        256
+      ],
+      "id": "df8e8c74-2509-488b-a083-1172ba7b2e85",
+      "name": "Redis Trigger",
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "r4haHB3NZLJOkJzd",
+          "mode": "list",
+          "cachedResultName": "StateMachine State Eat"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        16
+      ],
+      "id": "5b7c186d-2364-4bb5-9bf2-4179899140fb",
+      "name": "Execute Eat"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        48
+      ],
+      "id": "d5f2d12b-6fa6-481e-91c2-c05022cec1a1",
+      "name": "Start"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        16
+      ],
+      "id": "d0a19b4e-57b7-4668-83d3-7738bd303fd4",
+      "name": "End"
+    },
+    {
+      "parameters": {
+        "operation": "publish",
+        "channel": "minecraft-agent-state",
+        "messageData": "change-state"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1984,
+        0
+      ],
+      "id": "36e17aeb-3f0e-46e2-a5da-43fb6fe93c24",
+      "name": "Next State",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "eat",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        352,
+        -512
+      ],
+      "id": "17072954-8621-4fb9-a180-04520e05a689",
+      "name": "Set state eat",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "find",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        352,
+        -368
+      ],
+      "id": "e6777ff0-cae8-4196-8393-33a48f551cac",
+      "name": "Set state find",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Kxd7i4MrixVG5NKy",
+          "mode": "list",
+          "cachedResultName": "StateMachine State Find"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        832,
+        176
+      ],
+      "id": "ef51d104-c65f-41f6-b930-fd0794120be1",
+      "name": "Execute Find",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "find",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        832,
+        336
+      ],
+      "id": "28d8f2a9-0843-4509-a4c9-707418a16a8a",
+      "name": "Set state find default",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        176
+      ],
+      "id": "83cea3c2-ac6e-4b9e-a6d3-4013ebca88ba",
+      "name": "Wait 30",
+      "webhookId": "864b63f5-c9c0-4183-9f6b-4a8db02beb85"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "find",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1776,
+        176
+      ],
+      "id": "11388859-56fc-49c0-bd21-042fa5ddeb8d",
+      "name": "Set state find2",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d37a6a86-6437-41e2-8ba1-e22ba0230ab7",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1376,
+        16
+      ],
+      "id": "bd9908db-5479-4394-b12f-132606a04386",
+      "name": "Success"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Execute Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Dirt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Eat",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Find",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set state find default",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Wait": {
+      "main": [
+        [
+          {
+            "node": "End",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get state": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Dirt": {
+      "main": [
+        [
+          {
+            "node": "End",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Trigger": {
+      "main": [
+        [
+          {
+            "node": "Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Eat": {
+      "main": [
+        [
+          {
+            "node": "End",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "End": {
+      "main": [
+        [
+          {
+            "node": "Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Find": {
+      "main": [
+        [
+          {
+            "node": "End",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set state find default": {
+      "main": [
+        [
+          {
+            "node": "End",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 30": {
+      "main": [
+        [
+          {
+            "node": "Set state find2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set state find2": {
+      "main": [
+        [
+          {
+            "node": "Next State",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Success": {
+      "main": [
+        [
+          {
+            "node": "Next State",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 30",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee12dd3b782d9f3b1d650c984ef54e58f2a156617526f7cfe55a1161d4e9df17"
+  }
+}

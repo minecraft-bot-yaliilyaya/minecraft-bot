@@ -1,0 +1,272 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "45447f3b-f444-4c62-833b-738b44ad2998",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "find",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        32
+      ],
+      "id": "1bdf4e6b-ef5e-423c-befb-05e7152d6f5e",
+      "name": "Set state find",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:3000/inventory/findAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "28181bb1-9b03-4f7b-a24e-d59d00cfe16d",
+      "name": "Agent inventory/findAll"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1bc44b1b-43a0-4184-bd95-137bdcb07e58",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "bread",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "1c47de38-80ff-45e4-be84-d8e9f6eb6caa",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "cooked_porkchop",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "bfcea391-c10a-43d1-9e35-e6b39faa8af6",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "golden_apple",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "eed233e8-62a8-4adf-97f3-1f8f86eb9357",
+      "name": "Filter Food"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c7feb0f7-2bf6-4dc6-a657-c3655dada68a",
+              "leftValue": "={{ $json.count }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        656,
+        0
+      ],
+      "id": "c8954f5a-9753-46ad-94a4-1318133db6c7",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        896,
+        112
+      ],
+      "id": "d3a29034-b874-4c2f-8bfe-846f358d1dd0",
+      "name": "Нет еды"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        112
+      ],
+      "id": "0c992b15-d11a-4959-ad10-36b21665f5ca",
+      "name": "Wait",
+      "webhookId": "6c4da0d7-b244-4c8a-bd63-81651f84582f"
+    },
+    {
+      "parameters": {
+        "url": "=http://host.docker.internal:3000/agent/eatFood/{{ $json.name }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1024,
+        -80
+      ],
+      "id": "7fa9c2b0-6ab4-4688-b32a-37158101d576",
+      "name": "Agent agent/eatFood",
+      "executeOnce": true
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Agent inventory/findAll",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent inventory/findAll": {
+      "main": [
+        [
+          {
+            "node": "Filter Food",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Food": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Agent agent/eatFood",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Нет еды",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Нет еды": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Set state find",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent agent/eatFood": {
+      "main": [
+        [
+          {
+            "node": "Set state find",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee12dd3b782d9f3b1d650c984ef54e58f2a156617526f7cfe55a1161d4e9df17"
+  }
+}

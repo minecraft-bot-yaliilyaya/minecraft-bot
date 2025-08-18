@@ -1,0 +1,192 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fc96a813-f45e-442f-9b73-ed3684b702f9",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "wait",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        688,
+        144
+      ],
+      "id": "dbec182b-0879-4a56-9c28-47b2016f4807",
+      "name": "Set state wait",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:3000/info/all",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "b658184a-07fd-4010-9cc0-e8dfc48d63d8",
+      "name": "Agent Info"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "48438ac0-0b97-4ecb-9d12-93e861aa00ed",
+              "leftValue": "={{ $json.food }}",
+              "rightValue": 17,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "60870383-58ec-477b-9774-4bf1d8009770",
+              "leftValue": "={{ $json.saturation }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "0f396ce7-15d1-43ad-9e11-834ea1b1b1a8",
+      "name": "Голоден ?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        688,
+        -48
+      ],
+      "id": "e9996404-6136-49c6-adfa-b49a08f3fd96",
+      "name": "Нужно есть"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "eat",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        928,
+        -48
+      ],
+      "id": "82fe2a0f-3b07-4855-898c-a87e61df9c64",
+      "name": "Set state eat",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Agent Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent Info": {
+      "main": [
+        [
+          {
+            "node": "Голоден ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Голоден ?": {
+      "main": [
+        [
+          {
+            "node": "Нужно есть",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set state wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Нужно есть": {
+      "main": [
+        [
+          {
+            "node": "Set state eat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee12dd3b782d9f3b1d650c984ef54e58f2a156617526f7cfe55a1161d4e9df17"
+  }
+}

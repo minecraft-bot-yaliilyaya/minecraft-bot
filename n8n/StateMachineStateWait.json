@@ -1,0 +1,85 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1c3e33f9-9d59-45b8-817b-557b01c56d92",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "state",
+        "value": "find",
+        "keyType": "string"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "105cfd72-1d94-4740-a728-4612c39c4a07",
+      "name": "Set state find",
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "credentials": {
+        "redis": {
+          "id": "J84oJ4JLk7Dr1KYA",
+          "name": "Redis account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "b3de2113-78cc-4083-901d-b3a3e776c20f",
+      "name": "Wait 10",
+      "webhookId": "da131125-b0f7-49de-9cc0-f521546804d0"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Wait 10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 10": {
+      "main": [
+        [
+          {
+            "node": "Set state find",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee12dd3b782d9f3b1d650c984ef54e58f2a156617526f7cfe55a1161d4e9df17"
+  }
+}
