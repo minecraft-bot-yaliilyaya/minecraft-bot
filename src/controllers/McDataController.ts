@@ -12,19 +12,22 @@ export class McDataController {
         @inject(TYPES.Repository.McDataRepository) private mcDataRepository: McDataRepository
     ) {}
 
+    // mc-data/recipes
     async recipes(req: Request, res: Response)
     {
         res.json(this.mcDataRepository.getMcData().recipes);
     }
 
+    // mc-data/blocks
     async blocks(req: Request, res: Response)
     {
         //blocksByName
         res.json(this.mcDataRepository.getMcData().blocksByName);
     }
 
+    // mc-data/items
     async items(req: Request, res: Response)
     {
-        res.json(this.mcDataRepository.getMcData().itemsByName);
+        res.json(this.mcDataRepository.getMcData().items);
     }
 }
